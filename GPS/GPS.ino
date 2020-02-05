@@ -5,12 +5,12 @@
 #include <TinyGPS++.h>                       
 
 TinyGPSPlus gps;                            
-HardwareSerial Serial1(1);                 
+HardwareSerial gps_serial(1);                 
 
 void setup()
 {
   Serial.begin(115200);
-  Serial1.begin(9600, SERIAL_8N1, 12, 15);   //17-TX 18-RX
+  gps_serial.begin(9600, SERIAL_8N1, 34, 12);   //17-TX 18-RX
 }
 
 void loop()
@@ -43,8 +43,7 @@ static void smartDelay(unsigned long ms)
   unsigned long start = millis();
   do
   {
-    while (Serial1.available())
-      gps.encode(Serial1.read());
+    while (gps_serial.available())
+      gps.encode(gps_serial.read());
   } while (millis() - start < ms);
 }
-

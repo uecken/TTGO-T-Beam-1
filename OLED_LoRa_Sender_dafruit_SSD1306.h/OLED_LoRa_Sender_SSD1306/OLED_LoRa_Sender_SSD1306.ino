@@ -63,7 +63,7 @@ void loop() {
   // ディスプレイをクリア
   display.clearDisplay();
   // 出力する文字の大きさ
-  display.setTextSize(2);
+  display.setTextSize(1);
   // 出力する文字の色
   display.setTextColor(WHITE);
   // 文字の一番端の位置
