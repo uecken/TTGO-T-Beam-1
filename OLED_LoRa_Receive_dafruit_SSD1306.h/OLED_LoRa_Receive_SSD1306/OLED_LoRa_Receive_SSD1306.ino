@@ -5,7 +5,7 @@
 #include<Adafruit_SSD1306.h>
 //#include "SSD1306.h" 
 #include "images.h"
-
+ 
 //---GPS---
 #include <TinyGPS++.h>
 #include <axp20x.h>
@@ -54,6 +54,9 @@ void loraData(){
   display.println(packet);
   display.println(rssi); 
   //display.display();
+  Serial.println("Received.");
+  Serial.print(packet);
+  Serial.print(",");
   Serial.println(rssi);
 
 }
@@ -152,12 +155,12 @@ void gpsPrint(){
 
   Serial.print(String(BAND));
   Serial.print(",");
-  Serial.println("TxCnt: " + String(counter));
+  Serial.println("SlfCnt: " + String(counter));
   Serial.println("Lat,Lon,Alt_m,SatN,Time,kmph");
   Serial.print(gps.location.lat(), 5);
   Serial.print(",");
   Serial.print(gps.location.lng(), 5);
-  Serial.println(",");
+  Serial.print(",");
   Serial.print(gps.altitude.feet() / 3.2808);
   Serial.print("M");
   Serial.print(",");
